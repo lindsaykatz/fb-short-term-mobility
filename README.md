@@ -16,13 +16,13 @@ The `clean-fb-data` folder contains the cleaned Facebook data and resulting trav
 4.  `rates_age_filtered.csv` and `rates_no_age_filtered.csv` are subsets of `rates_age.csv` and `rates_no_age.csv` (respectively). To filter these data, we computed the root mean square error (RMSE) for each demographic grouping, and filtered out those data with a RMSE greater than the 95th quantile value.
 5.  `rates_age_monthly.csv` contains travel rates data at the monthly level, disaggregated by age. This file was used for our Covid-19 mortality rate adjustment application.
 
-The `flight_data_aggregate.csv` file contains the cleaned daily inbound flight volume data for each state, aggregated by airline.
+The `flight_data_aggregate.csv` file contains the cleaned daily inbound flight volume data for each state, aggregated by airline. The raw data are from the Bureau of Transportation Statistics [database](https://www.transtats.bts.gov/ontime/arrivals.aspx).
 
-The `census_pop_clean.csv` file contains the cleaned population estimates data by state, age, and sex, for 1 July 2020 and 1 July 2021.
+The `census_pop_all_ages.csv` file contains the cleaned population estimates data by state, age, and sex, for 1 July 2020 and 1 July 2021. The raw data are from the Census Bureau's State Population by Characteristics: 2020-2022 [dataset](https://www.census.gov/data/datasets/time-series/demo/popest/2020s-state-detail.html).
 
-Further, the `covid19_deaths_clean.csv` contains the cleaned monthly Covid-19 deaths data by age group, sex and state. This includes death counts for a number of uniquely classified causes of death.
+Further, the `covid19_deaths_all_ages.csv` contains the cleaned monthly Covid-19 deaths data by age group, sex and state. This includes death counts for a number of uniquely classified causes of death. The raw data are available for download from the CDC [data catalog](https://data.cdc.gov/NCHS/Provisional-COVID-19-Deaths-by-Sex-and-Age/9bhg-hcku).
 
-Finally, the `age_specific_death_rates.csv` file contains our computed age-specific death rates, calculated using the `census_pop_clean.csv` and `covid19_deaths_clean.csv` data.
+Finally, the `age_specific_death_rates.csv` file contains our computed age-specific death rates, calculated using the `census_pop_all_ages.csv` and `covid19_deaths_all_ages.csv` data.
 
 ## scripts
 
@@ -37,6 +37,7 @@ Finally, the `age_specific_death_rates.csv` file contains our computed age-speci
 5.  `05_mortality_data_clean.R` - clean the Census population data for each state, and the Covid-19 deaths data, in preparation for computing monthly Covid-19 mortality rates.
 
 6.  `06_get_monthly_travel_rates.R` - compute monthly travel rates using the same methods in the second script, which will be used for adjusting monthly Covid-19 mortality rates in the final script.
+7.  `07_covid_deaths_analysis.Rmd` - this Rmd file (and it's corresponding PDF) contain the code used to perform our Covid-19 mortality rate adjustment application.
 
 ## plots
 
