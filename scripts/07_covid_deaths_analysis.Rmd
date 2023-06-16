@@ -247,8 +247,10 @@ Now, let's add the projected 2000 U.S. standard population to the data (recall w
 Note that the data for the year 2000 from the [report](https://www.cdc.gov/nchs/data/nvsr/nvsr69/nvsr69-13-508.pdf) cited by the CDC has slightly different standard population values than those on the census website. This finding aligns with the statement in this [report](https://www.cdc.gov/nchs/data/statnt/statnt20.pdf): "published sums of the single years of age do not necessarily add to the published 5-year totals".
 
 ```{r}
+# The data used here are available for download from https://www.census.gov/data/datasets/2000/demo/popproj/2000-detailed-files-age-sex-race-his-origin.html
+
 # read in population projections data for 2000
-pop_proj_2000 <- read_table("../data/2000_pop_proj.txt", col_names = FALSE) %>% 
+pop_proj_2000 <- read_table("~/Desktop/RA/fb-migration/data/census-pop-data/2000_pop_proj.txt", col_names = FALSE) %>% 
   rename(series = X1,
          year = X2,
          age = X3,
@@ -258,7 +260,7 @@ pop_proj_2000 <- read_table("../data/2000_pop_proj.txt", col_names = FALSE) %>%
   select(year:female_pop)
 
 # read in population projections data for 2021
-pop_proj_2021 <- read_table("../data/2021_pop_proj.txt", col_names = FALSE) %>% 
+pop_proj_2021 <- read_table("~/Desktop/RA/fb-migration/data/census-pop-data/2021_pop_proj.txt", col_names = FALSE) %>% 
   rename(series = X1,
          year = X2,
          age = X3,
