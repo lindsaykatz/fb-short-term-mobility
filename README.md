@@ -1,6 +1,8 @@
 # Measuring short-term mobility patterns in North America using Facebook Advertising data, with an application to adjusting Covid-19 mortality rates
 
-This repository contains all materials relating to our paper exploring short-term mobility in North America using data scraped from Facebook's advertising platform. This is joint work by Lindsay Katz, Monica Alexander, and Michael Chong.
+This repository contains all materials relating to our paper exploring short-term mobility in North America using data scraped from Facebook's advertising platform. 
+
+This is joint work by Lindsay Katz, Michael Chong, and Monica Alexander.
 
 ## data
 
