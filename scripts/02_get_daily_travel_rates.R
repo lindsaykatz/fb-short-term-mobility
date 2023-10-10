@@ -67,16 +67,16 @@ d_merged_no_age <-  left_join(travel_df_no_age, pop_df_no_age, by = c("sex", "re
   filter(date>='2020-05-29') %>% 
   select(date, sex, region, daily_trav, monthly_trav, daily_pop, monthly_pop)
 
-# filter out rows where daily pop is 0, or daily pop is greater than 11000 and daily travelers is 0
-# cutoff is based on the population of smaller regions like Yukon where we can realistically expect 0 travelers
+# filter out rows where daily pop is 0, or daily travelers is 0 and the region is one of the Canadian territories
+# this is based on smaller regions where we can realistically expect 0 travelers
 df_age <- d_merged_age %>% 
   mutate(daily_pop = ifelse(daily_pop==0, NA, daily_pop)) %>% 
-  filter(daily_trav==0 & daily_pop<=11000 | daily_trav!=0) %>% 
+  filter(daily_trav==0 & region %in% c("Yukon", "Nunavut", "Northwest Territories") | daily_trav!=0) %>% 
   filter(is.na(daily_pop) | daily_trav <= daily_pop)
 
 df_no_age <- d_merged_no_age %>% 
   mutate(daily_pop = ifelse(daily_pop==0, NA, daily_pop)) %>% 
-  filter(daily_trav==0 & daily_pop<=11000 | daily_trav!=0) %>% 
+  filter(daily_trav==0 & region %in% c("Yukon", "Nunavut", "Northwest Territories") | daily_trav!=0) %>% 
   filter(is.na(daily_pop) | daily_trav <= daily_pop)
 
 # fill in missing data with that from closest previous day
